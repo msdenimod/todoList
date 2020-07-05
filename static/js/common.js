@@ -20,7 +20,7 @@ $( document ).ready(function() {
         dateFormat: 'yyyy-mm-dd',
         onSelect: function(formattedDate, date, inst) {
             $('#add-task-form #date').val(formattedDate);
-
+            $('.header-date').text(getFormatDate(formattedDate));
             $.ajax({
                 type: 'POST',
                 url: 'get_tasks_by_date/',
@@ -134,4 +134,10 @@ function getTasksForDate(date) {
 	$('.main-part .content').show();
 	$('.main-part .control-panel').hide();
 	$('.content__title span').text(newDate + ' г.');
+}
+
+function getFormatDate(date) {
+    var dateAr = date.split('-');
+    var newDate = dateAr[2] + '.' + dateAr[1] + '.' + dateAr[0];
+    return newDate;
 }

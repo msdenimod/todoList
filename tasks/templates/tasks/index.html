@@ -23,7 +23,7 @@
 
 <form id="add-task-form" class="mfp-hide white-popup-block">
     {% csrf_token %}
-    <h2>Добавить задачу на {{ date_format }} г.</h2>
+    <h2>Добавить задачу на <span class="header-date">{{ date_format }}</span> г.</h2>
     <fieldset style="border:0; ">
         <input id="date" name="date" type="hidden" value="{{ date }}">
         <div class="form-group">
