@@ -12,10 +12,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
 
 DATABASES = {
     'default': {
-        'NAME': 'todohi',
+        'NAME': 'cm89591_todo',
         'ENGINE': 'django.db.backends.mysql',
-        'USER': 'hz',
-        'PASSWORD': 'hz',
+        'USER': 'cm89591_todo',
+        'PASSWORD': 'K11Sk3EL',
         'OPTIONS': {
             'autocommit': True,
             'HOST': 'localhost',
