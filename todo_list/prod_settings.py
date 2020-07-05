@@ -4,7 +4,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'fdghj=1!rpotuueijtklmqewtu9*!9+0q5*349021#xr9+!sk)($$huejf'
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['todolistday.ru']
 
@@ -12,15 +12,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
 
 DATABASES = {
     'default': {
-        'NAME': 'cm89591_todo',
         'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'cm89591_todo',
         'USER': 'cm89591_todo',
         'PASSWORD': 'K11Sk3EL',
-        'OPTIONS': {
-            'autocommit': True,
-            'HOST': 'localhost',
-            'PORT': ' ',
-        }
+        'HOST': 'localhost',
     }
 }
 
