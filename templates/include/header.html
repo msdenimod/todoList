@@ -1,0 +1,21 @@
+<header>
+	<div class="container">
+		<div class="header-top f-wrap stpad">
+			<div class="logo">
+				<a class="logo__link" href="/">Todo <span>list</span></a>
+			</div>
+			<nav class="login-menu">
+				<span class="login-menu__icon"></span>
+				<ul class="login-menu__list hide df">
+					{% if user.is_authenticated %}
+						<li class="login-menu__item"><span>{{ user.username }}</span></li>
+						<li class="login-menu__item"><a href="{% url 'account_logout' %}">Выход</a></li>
+					{% else %}
+						<li class="login-menu__item"><a href="{% url 'account_login' %}">Вход</a></li>
+						<li class="login-menu__item"><a href="{% url 'account_signup' %}">Регистрация</a></li>
+					{% endif %}
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>

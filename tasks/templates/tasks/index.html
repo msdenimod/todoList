@@ -1,0 +1,42 @@
+{% extends "main/base-app.html" %}
+
+{% block title %} Задачи на день {% endblock title %}
+
+{% block content %}
+
+<section class="content">
+    <span class="back-to-calendar"><< Назад</span>
+    <div class="content-header">
+        <h1 class="content__title">Задачи на <span>{{ date_format }} г.</span></h1>
+        <a class="popup-with-form content-block-add" href="#add-task-form"><span>+</span> Добавить задачу</a>
+    </div>
+    <div class="tasks">
+        {% include 'tasks/tasks.html' %}
+    </div>
+</section>
+<section class="control-panel">
+    <h1 class="content__title">Выберите дату</h1>
+    <div id="datepicker" class="datepicker-here todo-datepicker"></div>
+    <div class="info-block"></div>
+    <a class="popup-with-form control-panel-block-add" href="#add-task-form">+</a>
+</section>
+
+<form id="add-task-form" class="mfp-hide white-popup-block">
+    {% csrf_token %}
+    <h2>Добавить задачу на {{ date_format }} г.</h2>
+    <fieldset style="border:0; ">
+        <input id="date" name="date" type="hidden" value="{{ date }}">
+        <div class="form-group">
+            <input id="title" name="title" type="text" placeholder="Заголовок" required="">
+            <div id="error-title"></div>
+        </div>
+        <div class="form-group">
+            <textarea id="description" name="description" placeholder="Описание" cols="30" rows="5"></textarea>
+        </div>
+        <div class="form-group">
+            <button id="btn-add-task" class="btn">Добавить</button>
+        </div>
+    </fieldset>
+</form>
+
+{% endblock content %}

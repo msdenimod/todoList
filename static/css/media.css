@@ -1,0 +1,102 @@
+@media (min-width: 520px) {
+	.control-panel {
+		align-items: center;
+	}
+	.control-panel .datepicker {
+		width: 350px;
+	}
+}
+
+@media (min-width: 700px) {
+	.content-header .content-block-add {
+	    margin-left: 0;
+	    margin-bottom: 15px;
+	    display: inline-block;
+	    padding: 7px 10px;
+	    border-radius: 5px;
+	    background: #906;
+	    color: #fff;
+	    position: relative;
+	    font-size: 16px;
+       width: auto;
+       height: auto;
+       right: auto;
+       bottom: auto;
+	}
+
+	.content-header .content-block-add span {
+	    font-size: 16px;
+	}
+    .control-panel .control-panel-block-add {
+        display: none;
+    }
+	.control-panel {
+		display: flex !important;
+		flex: 0 0 252px;
+		align-items: flex-start;
+		padding-left: 20px;
+		border-left: 1px solid #009933;
+		min-height: calc(100vh - 122px);
+	}
+	.control-panel .datepicker {
+		width: 250px;
+	}
+	.main-part {
+		-webkit-flex-direction: row;
+		-moz-flex-direction: row;
+		-ms-flex-direction: row;
+		-o-flex-direction: row;
+		flex-direction: row;
+		align-items: flex-start;
+	}
+	.content {
+		display: block !important;
+		padding: 0;
+		padding-right: 10px;
+		flex-grow: 1;
+	}
+	.back-to-calendar {
+		display: none;
+	}
+	.login-menu__list {
+		-webkit-flex-direction: row;
+		-moz-flex-direction: row;
+		-ms-flex-direction: row;
+		-o-flex-direction: row;
+		flex-direction: row;
+		position: relative;
+		top: 0;right: 0;
+		padding: 0;
+		box-shadow: none;
+	}
+	.login-menu__list.hide {
+		display: flex;
+	}
+	.login-menu__icon {
+		display: none;
+	}
+}
+
+@media (min-width: 760px) {
+    .content-header {
+        display: flex;
+        align-items: center;
+    }
+
+    .content-header .popup-with-form {
+        display: block;
+        margin-left: 50px;
+    }
+}
+
+@media (min-width: 1000px) {
+	.container {
+		max-width: 800px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.container {
+		max-width: 970px;
+	}
+}

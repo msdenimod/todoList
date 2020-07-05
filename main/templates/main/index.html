@@ -1,0 +1,8 @@
+{% extends "main/base-app.html" %}
+
+{% block content %}
+
+<h1>Это главная страница с сылками войти или зарегестрироваться!</h1>
+<a href="{% url 'tasks' %}">Задачи на день</a>
+
+{% endblock content %}
