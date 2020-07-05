@@ -6,7 +6,7 @@ SECRET_KEY = 'fdghj=1!rpotuueijtklmqewtu9*!9+0q5*349021#xr9+!sk)($$huejf'
 
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['todolistday.ru']
 
 EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
 
