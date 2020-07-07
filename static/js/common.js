@@ -63,6 +63,7 @@ $( document ).ready(function() {
     // Меняем статус задачи на обратный
     $( "body" ).on( "click", '.task-item .checkbox-blok', function() {
 
+        parent.toggleClass('checked');
         var parent = $(this).parent();
         var id = parent.data('id');
 
@@ -98,8 +99,8 @@ $( document ).ready(function() {
 
     // Добавляем задачу
     $( "#add-task-form" ).on( "click", '#btn-add-task', function(e) {
-
         e.preventDefault();
+        $('#loadImg').removeClass('hide');
         $.ajax({
             type: 'POST',
             url: 'add_task/',
@@ -110,6 +111,7 @@ $( document ).ready(function() {
                 csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
             },
             success: function (html) {
+                $('#loadImg').addClass('hide');
                 if (html == 'not_access') {
                     $('#add-task-form h2').text('Доступ запрещен!');
                 } else if (html == 'empty_title') {
@@ -121,7 +123,6 @@ $( document ).ready(function() {
                     $('#add-task-form')[0].reset();
                     $('.tasks').html(html);
                 }
-
             }
         });
 
