@@ -63,8 +63,8 @@ $( document ).ready(function() {
     // Меняем статус задачи на обратный
     $( "body" ).on( "click", '.task-item .checkbox-blok', function() {
 
-        parent.toggleClass('checked');
         var parent = $(this).parent();
+        parent.toggleClass('checked');
         var id = parent.data('id');
 
         $.ajax({
