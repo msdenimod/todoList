@@ -59,7 +59,7 @@ $( document ).ready(function() {
 	});
 
     // Меняем статус задачи на обратный
-    $( "body" ).on( "click", '.task-item .checkbox-blok', function() {
+    $( "body" ).on( "click", '.task-item .checkbox-blok, .task-item .checkbox-blok + p', function() {
 
         var parent = $(this).parent();
         parent.toggleClass('checked');
@@ -108,9 +108,10 @@ $( document ).ready(function() {
 
     // Показать/скрыть меню задачи
     $( "body" ).on( "click", '.edit-icon', function() {
-        //$(".serveces-menu").addClass('hide');
+        $(".edit-icon").removeClass('edit-icon-selected');
+        $(this).addClass('edit-icon-selected');
         $(this).siblings(".serveces-menu").toggleClass('hide');
-
+        $(".edit-icon:not(.edit-icon-selected)").siblings(".serveces-menu").addClass('hide');
     });
 
     // Добавить задачу заполнение и изменение формы

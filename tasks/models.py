@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 
 class Task(models.Model):
@@ -16,3 +17,7 @@ class Task(models.Model):
     class Meta:
         verbose_name = "Задача"
         verbose_name_plural = "Задачи"
+
+    def tomorrow(self):
+        tomorrowDate = datetime.date.today() + datetime.timedelta(days=1)
+        return tomorrowDate
