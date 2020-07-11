@@ -5,7 +5,7 @@
 {% block content %}
 
 <section class="content">
-    <span class="back-to-calendar"><< Назад</span>
+    <span class="back-to-calendar">Выбрать дату</span>
     <div class="content-header">
         <h1 class="content__title">Задачи на <span>{{ date_format }} г.</span></h1>
         <a class="popup-with-form content-block-add" href="#add-task-form"><span>+</span> Добавить задачу</a>
@@ -14,7 +14,7 @@
         {% include 'tasks/tasks.html' %}
     </div>
 </section>
-<section class="control-panel">
+<section class="control-panel hide">
     <h1 class="content__title">Выберите дату</h1>
     <div id="datepicker" class="datepicker-here todo-datepicker"></div>
     <div class="info-block"></div>
@@ -23,17 +23,18 @@
 
 <form id="add-task-form" class="mfp-hide white-popup-block">
     {% csrf_token %}
-    <h2>Добавить задачу на <span class="header-date">{{ date_format }}</span> г.</h2>
+    <h2></h2>
     <fieldset style="border:0; ">
         <input id="date" name="date" type="hidden" value="{{ date }}">
         <div class="form-group">
             <input id="title" name="title" type="text" placeholder="Заголовок" required="">
             <div id="error-title"></div>
         </div>
-        <div class="form-group">
-            <textarea id="description" name="description" placeholder="Описание" cols="30" rows="5"></textarea>
+        <div class="form-group description-wrap">
+            <span class="hide-show-description-btn">+ Добавить описание</span>
+            <textarea id="description" class="hide" name="description" placeholder="Описание" cols="30" rows="5"></textarea>
         </div>
-        <div class="form-group">
+        <div class="form-group mt-20">
             <button id="btn-add-task" class="btn">Добавить</button>
         </div>
     </fieldset>

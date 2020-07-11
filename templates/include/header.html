@@ -2,7 +2,11 @@
 	<div class="container">
 		<div class="header-top f-wrap stpad">
 			<div class="logo">
-				<a class="logo__link" href="/">Todo <span>list</span></a>
+				{% if user.is_authenticated %}
+					<a class="logo__link" href="{% url 'main' %}">Todo <span>list</span></a>
+				{% else %}
+					<a class="logo__link" href="/">Todo <span>list</span></a>
+				{% endif %}
 			</div>
 			<nav class="login-menu">
 				<span class="login-menu__icon"></span>

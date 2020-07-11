@@ -1,7 +1,16 @@
 {% for task in tasks_list %}
     <div class="task-wrap">
         <div class="task-item {% if task.done %}checked{% endif %}"  data-id="{{ task.id }}">
-            <span class="checkbox-blok"></span> <p>{{ task.title }}</p><span class="edit-icon"></span>
+            <span class="checkbox-blok"></span>
+            <p>{{ task.title }}</p>
+            <span class="edit-icon"></span>
+            <ul class="serveces-menu hide">
+                <li><span class="for-tomorrow">Пернести на завтра</span></li>
+                <li><span class="for-today">Пернести на сегодня</span></li>
+                <li><span class="edit-task">Редактировать</span></li>
+                <li><span class="on-morrow hide">Пернести на дугой день</span></li>
+                <li><span class="delete-task">Удалить</span></li>
+            </ul>
         </div>
         {% if task.description != '' %}
         <div class="wpap-description">

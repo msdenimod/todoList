@@ -2,8 +2,13 @@
 	.control-panel {
 		align-items: center;
 	}
+
 	.control-panel .datepicker {
 		width: 350px;
+	}
+
+	.white-popup-block {
+	    padding: 30px 55px;
 	}
 }
 

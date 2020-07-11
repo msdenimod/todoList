@@ -105,7 +105,6 @@ footer {
 	flex-direction: column;
 }
 .content {
-	display: none;
 	padding: 10px 0;
 }
 
@@ -175,6 +174,7 @@ footer {
 	-khtml-user-select: none;
 	user-select: none;
 	align-items: center;
+	position: relative;
 }
 
 .task-item span,
@@ -184,7 +184,7 @@ footer {
 }
 
 .task-item span.edit-icon::after {
-    content: '\270E	';
+    content: '\FE19';
     color: #dbdbdb;
     margin-left: 7px;
     text-decoration: none;
@@ -244,6 +244,7 @@ footer {
 }
 .task-item span.edit-icon {
     text-decoration: none;
+    position: relative;
 }
 .control-panel {
 	display: -webkit-flex;
@@ -288,12 +289,13 @@ footer {
     max-width: 500px;
     position:relative;
     margin: 0 auto;
-    padding: 30px 55px;
+    padding: 20px 20px;
     border-radius: 4px;
 }
 .white-popup-block h2 {
     text-align: center;
     font-size: 18px;
+    padding: 0 50px;
 }
 .white-popup-block fieldset {
     margin-top: 20px;
@@ -386,5 +388,40 @@ label[for="id_password"],
 	user-select: none;  
 }
 
+.serveces-menu {
+	width: 200px;
+	background: #fff;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	padding: 10px 0;
+	font-size: 10px;
+	position: absolute;
+	left: 32px;
+	top: 0;
+	z-index: 9999;
+	border-radius: 3px;
+}
 
+.serveces-menu li span {
+	font-size: 14px;
+	padding: 10px 20px;
+	display: block;
+	cursor: pointer;
+	color: #000;
+}
 
+.serveces-menu li span:hover {
+	background: #ccc;
+	color: #000;
+}
+
+.hide-show-description-btn {
+	font-size: 16px;
+	color: #906;
+	cursor: pointer;
+	display: block;
+	margin-bottom: 10px;
+}
+
+.description-wrap {
+	text-align: left;
+}

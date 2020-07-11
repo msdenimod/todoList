@@ -4,6 +4,7 @@ from django.views.generic.base import View
 
 from .models import Task
 import datetime
+import json
 
 
 class TasksView(View):
@@ -67,3 +68,101 @@ def add_task(request):
         return HttpResponse('empty_title')
 
     return HttpResponse(False)
+
+
+def for_tomorrow(request):
+    """Перенести задачу на завтра"""
+    if not request.user.is_authenticated:
+        return HttpResponse('not_access')
+
+    if request.method == 'POST':
+        id = request.POST['id']
+        task = Task.objects.get(pk=id)
+        current_date = datetime.datetime.now()
+        task.date = current_date + datetime.timedelta(days=1)
+        task.save()
+        return HttpResponse('ok')
+
+    return HttpResponse('error')
+
+
+def for_today(request):
+    """Перенести задачу на сегодня"""
+    if not request.user.is_authenticated:
+        return HttpResponse('not_access')
+
+    if request.method == 'POST':
+        id = request.POST['id']
+        task = Task.objects.get(pk=id)
+        current_date = datetime.datetime.now()
+        task.date = current_date
+        task.save()
+        return HttpResponse('ok')
+
+    return HttpResponse('error')
+
+
+def delete_task(request):
+    """Удалить задачу"""
+    if not request.user.is_authenticated:
+        return HttpResponse('not_access')
+
+    if request.method == 'POST':
+        id = request.POST['id']
+        task = Task.objects.get(pk=id)
+
+        if task.user_id != request.user.id:
+            return HttpResponse('not_access')
+
+        task.delete()
+
+        return HttpResponse('ok')
+
+    return HttpResponse('error')
+
+
+def get_task_by_id(request):
+    """достать задачу для редактирования"""
+    if not request.user.is_authenticated:
+        return HttpResponse('not_access')
+
+    if request.method == 'POST':
+        id = request.POST['id']
+        task = Task.objects.get(pk=id)
+
+        if task.user_id != request.user.id:
+            return HttpResponse('not_access')
+
+        result = {
+            'status': 'success',
+            'title': task.title,
+            'description': task.description,
+        }
+
+        return HttpResponse(json.dumps(result))
+
+    return HttpResponse('error')
+
+
+def edit_task(request):
+    """Редактировать задачу"""
+    if not request.user.is_authenticated:
+        return HttpResponse('not_access')
+
+    if request.method == 'POST' and request.POST['title'] != '':
+        id = request.POST['id']
+        task = Task.objects.get(pk=id)
+
+        if task.user_id != request.user.id:
+            return HttpResponse('not_access')
+
+        task.title = request.POST['title']
+        task.description = request.POST['description']
+        task.save()
+
+        return HttpResponse('ok')
+
+    if request.POST['title'] == '':
+        return HttpResponse('empty_title')
+
+    return HttpResponse('error')
