@@ -171,7 +171,6 @@ $( document ).ready(function() {
             },
             success: function (data) {
                 getTaskByDate(date);
-                $('#loadImg').addClass('hide');
             }
         });
     });
@@ -191,7 +190,6 @@ $( document ).ready(function() {
             },
             success: function (data) {
                 getTaskByDate(date);
-                $('#loadImg').addClass('hide');
             }
         });
     });
@@ -245,7 +243,6 @@ $( document ).ready(function() {
         var title = $('#add-task-form #title').val();
         var description = $('#add-task-form #description').val();
         var date = $('#add-task-form input#date').val();
-        console.log(idTask);
         $('#loadImg').removeClass('hide');
         $.ajax({
             type: 'POST',
@@ -257,7 +254,6 @@ $( document ).ready(function() {
                 csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
             },
             success: function (data) {
-                $('#loadImg').addClass('hide');
                 if (data == 'not_access') {
                     $('#add-task-form h2').text('Доступ запрещен!');
                 } else if (data == 'error') {
@@ -294,7 +290,6 @@ $( document ).ready(function() {
             },
             success: function (data) {
                 getTaskByDate(date);
-                $('#loadImg').addClass('hide');
             }
         });
     });
@@ -316,6 +311,7 @@ function getFormatDate(date) {
 }
 
 function getTaskByDate(date) {
+    $('#loadImg').removeClass('hide');
     $.ajax({
         type: 'POST',
         url: 'get_tasks_by_date/',
@@ -326,6 +322,7 @@ function getTaskByDate(date) {
         success: function (html) {
             $('.tasks').html(html);
             getTasksForDate(date);
+            $('#loadImg').addClass('hide');
         }
     });
 }
