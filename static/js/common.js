@@ -28,6 +28,9 @@ $( document ).ready(function() {
     // календарь
     $('.todo-datepicker').datepicker({
         dateFormat: 'yyyy-mm-dd',
+//        onRenderCell: function(date, cellType) {
+//            isTaskDay(date);
+//        },
         onSelect: function(formattedDate, date, inst) {
             $('#add-task-form #date').val(formattedDate);
             $('.header-date').text(getFormatDate(formattedDate));
@@ -120,7 +123,7 @@ $( document ).ready(function() {
         $('#error-title').text('');
         $('#add-task-form #title').val('');
         $('#add-task-form #description').val('');
-        $('#add-task-form h2').html('Добавить задачу на <span class="header-date">' + getFormatDate(dateForm) + '</span> г.');
+        $('#add-task-form h2').html('Добавить задачу на <span class="header-date">' + getFormatDate(dateForm) + '</span>');
         $('#add-task-form button.btn').text('Добавить');
         $('#add-task-form button.btn').attr('id', 'btn-add-task');
         $('#add-task-form button.btn').removeAttr('data-id-task');
@@ -297,16 +300,23 @@ $( document ).ready(function() {
 });
 
 function getTasksForDate(date) {
-    var dateAr = date.split('-');
-    var newDate = dateAr[2] + '.' + dateAr[1] + '.' + dateAr[0];
+    var newDate = getFormatDate(date);
 	$('.main-part .content').removeClass('hide');
 	$('.main-part .control-panel').addClass('hide');
-	$('.content__title span').text(newDate + ' г.');
+	$('.content__title span').text(newDate);
 }
 
 function getFormatDate(date) {
+
     var dateAr = date.split('-');
     var newDate = dateAr[2] + '.' + dateAr[1] + '.' + dateAr[0];
+    var nowDate = formatDate(new Date());
+    if(newDate === nowDate) {
+        newDate = 'сегодня';
+    } else {
+         newDate += ' г.';
+    }
+
     return newDate;
 }
 
@@ -325,4 +335,36 @@ function getTaskByDate(date) {
             $('#loadImg').addClass('hide');
         }
     });
+}
+
+function isTaskDay(date) {
+    $.ajax({
+        type: 'POST',
+        url: 'checked_is_task/',
+        data: {
+            date: date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate(),
+            csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
+        },
+        error: function () {
+            isTask = false;
+        },
+        success: function (data) {
+            if(data === 'True') {
+                $('.datepicker--cells-days[data-date="' + date.getDate() + '"]').addClass('is-task-calendar');
+            }
+        }
+    });
+}
+
+function formatDate(date) {
+
+  var dd = date.getDate();
+  if (dd < 10) dd = '0' + dd;
+
+  var mm = date.getMonth() + 1;
+  if (mm < 10) mm = '0' + mm;
+
+  var yy = date.getFullYear();
+
+  return dd + '.' + mm + '.' + yy;
 }

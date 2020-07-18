@@ -249,7 +249,13 @@ footer {
 .task-item span.edit-icon {
     text-decoration: none;
     position: relative;
-    margin-right: 8px;
+    margin-left: 8px;
+    -webkit-order: 5;
+    -moz-order: 5;
+    -ms-order: 5;
+    -o-order: 5;
+    order: 5;
+    margin-left: auto;
 }
 .control-panel {
 	display: -webkit-flex;
@@ -267,12 +273,15 @@ footer {
 	color: #906;
 }
 .control-panel .datepicker--cell.-current- {
-	color: #093;
+	color: #009933 !important;
+	font-weight: bold;
+	background: #fff !important;
 }
 .control-panel .datepicker--cell.-selected-, 
 .control-panel .datepicker--cell.-selected-.-current-,
 .control-panel .datepicker--cell.-selected-.-focus- {
 	background: #990066;
+	color: #fff;
 }
 .info-block {
 	flex-grow: 1;
@@ -400,7 +409,7 @@ label[for="id_password"],
 	padding: 10px 0;
 	font-size: 10px;
 	position: absolute;
-	left: 32px;
+	right: 32px;
 	top: 0;
 	z-index: 9999;
 	border-radius: 3px;
@@ -429,4 +438,8 @@ label[for="id_password"],
 
 .description-wrap {
 	text-align: left;
+}
+
+.is-task-calendar {
+    background: red;
 }

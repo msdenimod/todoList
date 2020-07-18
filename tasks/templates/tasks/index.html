@@ -4,10 +4,21 @@
 
 {% block content %}
 
+{% now "Y-m-d" as today %}
+
 <section class="content">
     <span class="back-to-calendar">Выбрать дату</span>
     <div class="content-header">
-        <h1 class="content__title">Задачи на <span>{{ date_format }} г.</span></h1>
+        <h1 class="content__title">
+            Задачи на
+            <span>
+                {% if today == date %}
+                    сегодня
+                {% else %}
+                    {{ date_format }} г.
+                {% endif %}
+            </span>
+        </h1>
         <a class="popup-with-form content-block-add" href="#add-task-form"><span>+</span> Добавить задачу</a>
     </div>
     <div class="tasks">

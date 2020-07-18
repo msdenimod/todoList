@@ -1,7 +1,6 @@
 {% now "Y-m-d" as today_str %}
 {% for task in tasks_list %}
     <div class="task-wrap">
-        {{ task.tomorrow_str }}
         <div class="task-item {% if task.done %}checked{% endif %}"  data-id="{{ task.id }}">
             <span class="edit-icon"></span>
             <ul class="serveces-menu hide">
