@@ -28,9 +28,7 @@ $( document ).ready(function() {
     // календарь
     $('.todo-datepicker').datepicker({
         dateFormat: 'yyyy-mm-dd',
-//        onRenderCell: function(date, cellType) {
-//            isTaskDay(date);
-//        },
+        todayButton: new Date(),
         onSelect: function(formattedDate, date, inst) {
             $('#add-task-form #date').val(formattedDate);
             $('.header-date').text(getFormatDate(formattedDate));
@@ -333,25 +331,6 @@ function getTaskByDate(date) {
             $('.tasks').html(html);
             getTasksForDate(date);
             $('#loadImg').addClass('hide');
-        }
-    });
-}
-
-function isTaskDay(date) {
-    $.ajax({
-        type: 'POST',
-        url: 'checked_is_task/',
-        data: {
-            date: date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate(),
-            csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
-        },
-        error: function () {
-            isTask = false;
-        },
-        success: function (data) {
-            if(data === 'True') {
-                $('.datepicker--cells-days[data-date="' + date.getDate() + '"]').addClass('is-task-calendar');
-            }
         }
     });
 }

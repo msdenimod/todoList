@@ -166,21 +166,3 @@ def edit_task(request):
         return HttpResponse('empty_title')
 
     return HttpResponse('error')
-
-
-def checked_is_task(request):
-    """есть ли задачи по дате ajax"""
-    if not request.user.is_authenticated:
-        return False
-
-    result = False
-    if request.method == 'POST':
-        date = request.POST['date']
-        tasks = Task.objects.filter(date=date, user_id=request.user.id)
-
-        if tasks:
-            result = True
-        else:
-            result = False
-
-    return HttpResponse(result)

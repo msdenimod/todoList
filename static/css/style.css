@@ -283,6 +283,9 @@ footer {
 	background: #990066;
 	color: #fff;
 }
+.control-panel .datepicker--button {
+	color: #906;
+}
 .info-block {
 	flex-grow: 1;
 }

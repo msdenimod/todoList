@@ -92,7 +92,7 @@
 		box-shadow: none;
 	}
 	.login-menu__list.hide {
-		display: flex;
+		display: flex !important;
 	}
 	.login-menu__icon {
 		display: none;

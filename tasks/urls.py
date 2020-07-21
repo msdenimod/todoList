@@ -14,5 +14,4 @@ urlpatterns = [
     path('get_task_by_id/', get_task_by_id, name='get_task_by_id'),
     path('edit_task/', edit_task, name='edit_task'),
     path('delete_task/', delete_task, name='delete_task'),
-    path('checked_is_task/', checked_is_task, name='checked_is_task'),
 ]
