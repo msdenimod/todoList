@@ -109,6 +109,10 @@
         display: block;
         margin-left: 50px;
     }
+
+    footer>.container {
+        display: block;
+    }
 }
 
 @media (min-width: 1000px) {

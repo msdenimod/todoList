@@ -12,6 +12,9 @@ footer {
 	background: #000;
 	margin-top: 50px;
 }
+footer>.container {
+	display: none;
+}
 
 .header-top {
 	justify-content: space-between;
@@ -185,6 +188,10 @@ footer {
 .task-item p {
     font-size: 20px;
 	cursor: pointer;
+}
+
+.task-item p {
+    margin-right: 10px;
 }
 
 .task-item span.edit-icon::after {
