@@ -453,3 +453,19 @@ label[for="id_password"],
 .is-task-calendar {
     background: red;
 }
+
+.dp-note {
+    display: block;
+    width: 5px;
+    height: 5px;
+    background: #906;
+    position: absolute;
+    top: 8px;
+    right: 13px;
+    border-radius: 50%;
+}
+
+.hjf {
+	justify-content: center;
+	align-items: center;
+}

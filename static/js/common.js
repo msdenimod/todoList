@@ -1,5 +1,7 @@
 $( document ).ready(function() {
 
+    gerEventDate();
+
     // login menu
 	$('.login-menu__icon').on('click', function(){
 		$('.login-menu__list').toggleClass('hide');
@@ -29,6 +31,17 @@ $( document ).ready(function() {
     $('.todo-datepicker').datepicker({
         dateFormat: 'yyyy-mm-dd',
         todayButton: new Date(),
+        onRenderCell: function (date, cellType) {
+            var currentDate = date.getDate();
+            var currentMonth = date.getMonth();
+
+            // Добавляем вспомогательный элемент, если число содержится в `eventDates`
+            if (cellType == 'day' && eventDates.indexOf(currentDate + '.' + currentMonth) != -1) {
+                return {
+                    html: currentDate + '<span class="dp-note"></span>'
+                }
+            }
+        },
         onSelect: function(formattedDate, date, inst) {
             $('#add-task-form #date').val(formattedDate);
             $('.header-date').text(getFormatDate(formattedDate));
@@ -346,4 +359,8 @@ function formatDate(date) {
   var yy = date.getFullYear();
 
   return dd + '.' + mm + '.' + yy;
+}
+
+function gerEventDate() {
+    eventDates = ['1.7', '10.6', '12.6', '16.6', '17.6', '22.6'];
 }
