@@ -2,6 +2,7 @@
 *~
 __pycache__
 myvenv
+env
 db.sqlite3
 .idea
 todo_list/local_settings.py
