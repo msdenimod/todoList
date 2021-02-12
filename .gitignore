@@ -8,3 +8,4 @@ db.sqlite3
 todo_list/local_settings.py
 todo_list/gunicorn_config.py
 bin
+static
