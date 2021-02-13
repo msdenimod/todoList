@@ -10,22 +10,23 @@ ALLOWED_HOSTS = ['*']
 
 EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend' # TOODO Надо посмотреть как отправлять письма
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'cm89591_todo',
-#         'USER': 'cm89591_todo',
-#         'PASSWORD': 'K11Sk3EL',
-#         'HOST': 'localhost',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'todo_db',
+       'USER': 'todo',
+       'PASSWORD': 'Efedor44a//',
+       'HOST': '127.0.0.1',
+       'PORT': '5432',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
