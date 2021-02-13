@@ -13,7 +13,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend' # TOODO Надо 
 DATABASES = {
     'default': {
        'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'todo_db',
+       'NAME': 'todo_d',
        'USER': 'todo',
        'PASSWORD': 'Efedor44a//',
        'HOST': '127.0.0.1',
