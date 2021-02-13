@@ -18,7 +18,7 @@ from django.urls import include, path
 
 urlpatterns = [
     path('accounts/', include('allauth.urls')),
-    path('admin/', admin.site.urls),
+    path('msdenimod_admin/', admin.site.urls),
     path('tasks/', include('tasks.urls')),
     path('', include('main.urls')),
 ]
