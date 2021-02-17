@@ -6,6 +6,6 @@ env
 db.sqlite3
 .idea
 todo_list/local_settings.py
-todo_list/gunicorn_config.py
+gunicorn_config.py
 bin
 static
